@@ -21,8 +21,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI PR Reviewer",
-  description: "Auto PR Reviewer with AI",
+  title: "PR Pilot - AI Code Reviewer",
+  description:
+    "PR Pilot is an AI-powered code reviewer that helps you write better code",
 };
 
 export default function RootLayout({
