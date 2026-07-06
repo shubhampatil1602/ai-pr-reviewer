@@ -6,5 +6,5 @@ export default async function ProtectedLayout({
   children: React.ReactNode;
 }) {
   await requireAuth();
-  return <main className='min-h-svh max-w-7xl w-full mx-auto'>{children}</main>;
+  return <main className='min-h-svh w-full'>{children}</main>;
 }
