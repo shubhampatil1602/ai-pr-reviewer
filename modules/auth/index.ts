@@ -3,7 +3,14 @@ export { auth } from "./lib/auth";
 export { authClient } from "./lib/auth-client";
 
 // types
-export type { GithubSignInFormProps, SignInPageProps } from "./types";
+export type {
+  GithubSignInFormProps,
+  SignInPageProps,
+  UserMenuProps,
+  UserMenuTriggerVariant,
+  UserMenuUser,
+  UserMenuWithSessionProps,
+} from "./types";
 
 // utils
 export { handleAuthProxy } from "./utils/auth-proxy";

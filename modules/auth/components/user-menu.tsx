@@ -90,10 +90,10 @@ export function UserMenu({
         />
         {variant === "profile" ? (
           <>
-            <span className='max-w-32 truncate text-left text-xs font-medium'>
+            <span className='truncate text-left text-xs font-medium flex-1'>
               {displayName}
             </span>
-            <CaretCircleUpIcon className='size-4 text-muted-foreground' />
+            <CaretCircleUpIcon className='size-4 shrink-0 text-muted-foreground ml-auto' />
           </>
         ) : null}
       </DropdownMenuTrigger>
