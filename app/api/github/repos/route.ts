@@ -16,7 +16,7 @@ export async function GET(request: Request) {
 
   if (!installationId) {
     return NextResponse.json(
-      { error: "GitHub App not connected" },
+      { error: "Github App not connected" },
       { status: 400 },
     );
   }

@@ -13,20 +13,20 @@ import { RepoList } from "@/modules/dashboard/components/repo-list";
 export const metadata: Metadata = {
   title: "Repositories · Dashboard",
   description:
-    "All public and private repositories available to the GitHub App.",
+    "All public and private repositories available to the Github App.",
 };
 
 function ReposNotConnected() {
   return (
     <div className='flex flex-1 flex-col items-center justify-center gap-4 p-6'>
       <p className='text-sm text-muted-foreground'>
-        Install the GitHub App first to see your repositories.
+        Install the Github App first to see your repositories.
       </p>
       <Button
         nativeButton={false}
         render={<Link href={DASHBOARD_ROUTES.github} />}
       >
-        Go to GitHub App
+        Go to Github App
       </Button>
     </div>
   );
@@ -44,7 +44,7 @@ export default async function DashboardReposPage() {
   const header = (
     <DashboardHeader
       title='Repositories'
-      description='All public and private repositories available to the GitHub App.'
+      description='All public and private repositories available to the Github App.'
     />
   );
 

@@ -175,7 +175,7 @@ export function GithubConnectCard({
                 <GithubLogo className='size-6' />
               </span>
               <div>
-                <CardTitle>GIthub App</CardTitle>
+                <CardTitle>Github App</CardTitle>
                 <CardDescription className='text-xs leading-tight mt-0.5 max-w-xs sm:max-w-full'>
                   Install the PR Pilot reviewer app on your Github account or
                   organization to access public and private repositories.
