@@ -2,6 +2,9 @@ import { savePullRequest } from "@/modules/review/server/save-pull-request";
 import { PullRequestWebhookPayload, REVIEWABLE_ACTIONS } from "../types";
 import { getGithubApp } from "../utils/github-app";
 import { inngest } from "@/modules/inngest/client";
+import { getUserIdByInstallationId } from "./installation";
+import { canUserReview } from "@/modules/billing/server/usage";
+import { prisma } from "@/lib/db";
 
 async function isSignatureValid(payload: string, signature: string | null) {
   if (!signature) {
@@ -37,6 +40,23 @@ export async function handleGithubWebhook(request: Request) {
   }
 
   const pullRequest = await savePullRequest(event);
+
+  const userId = await getUserIdByInstallationId(event.installation.id);
+
+  if (userId) {
+    const allowed = await canUserReview(userId);
+    if (!allowed) {
+      await prisma.pullRequest.update({
+        where: {
+          id: pullRequest.id,
+        },
+        data: {
+          status: "rate_limited",
+        },
+      });
+      return Response.json({ received: true, rateLimited: true });
+    }
+  }
 
   await inngest.send({
     name: "github/pr.received",

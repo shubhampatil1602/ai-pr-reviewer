@@ -26,7 +26,7 @@ export const DASHBOARD_NAV_ITEMS = [
     icon: "folder-git-2" as const,
   },
   {
-    title: "GIthub App",
+    title: "Github App",
     href: DASHBOARD_ROUTES.github,
     icon: "github" as const,
   },

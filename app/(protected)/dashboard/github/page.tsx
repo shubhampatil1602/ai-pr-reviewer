@@ -6,7 +6,7 @@ import { getInstallationStatus } from "@/modules/github/server/installation";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "PR Pilot - GIthub App",
+  title: "PR Pilot · Github App",
   description: "Integrate your Github account with PR Pilot - AI Code Reviewer",
 };
 
@@ -17,7 +17,7 @@ export default async function DashboardGithubPage() {
   return (
     <>
       <DashboardHeader
-        title='GIthub App'
+        title='Github App'
         description='Install or disconnect the reviewer app on your Github account.'
       />
       <GithubConnectCard userId={session.user.id} installation={installation} />
