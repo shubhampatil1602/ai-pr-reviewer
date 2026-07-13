@@ -4,6 +4,7 @@ import { getServerSession } from "@/modules/auth";
 import {
   cancelProSubscription,
   createProSubscription,
+  resetProSubscription,
 } from "@/modules/billing/server/subscription";
 import { redirect } from "next/navigation";
 
@@ -25,4 +26,14 @@ export async function cancelSubscription() {
   }
 
   await cancelProSubscription(session.user.id);
+}
+
+export async function resetSubscription() {
+  const session = await getServerSession();
+
+  if (!session) {
+    redirect("/sign-in");
+  }
+
+  await resetProSubscription(session.user.id);
 }

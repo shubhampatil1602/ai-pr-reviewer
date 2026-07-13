@@ -32,7 +32,9 @@ import { SettingsProfile } from "@/modules/settings/types";
 import { UsageSummary } from "@/modules/billing/server/usage";
 import { statusBadge } from "../lib/status-style";
 import { CancelSubscriptionButton } from "@/modules/billing/components/cancel-subscription-button";
+import { resetSubscription } from "@/lib/billing";
 import { getDisplayName, getInitials } from "@/modules/auth/utils/user-menu";
+import { Button } from "@/components/ui/button";
 
 type SettingsContentProps = {
   profile: SettingsProfile;
@@ -214,7 +216,8 @@ function SubscriptionTab({
             </p>
             {renewalDate ? (
               <p className='text-xs text-muted-foreground'>
-                Renews {renewalDate}
+                {subscription.status === "canceled" ? "Expires" : "Renews"}{" "}
+                {renewalDate}
               </p>
             ) : null}
           </div>
@@ -234,6 +237,14 @@ function SubscriptionTab({
             disabled={subscription.status === "canceled"}
           />
         ) : null}
+
+        {process.env.NODE_ENV === "development" && (
+          <form action={resetSubscription}>
+            <Button variant='outline' type='submit'>
+              Reset Subscription (Dev Only)
+            </Button>
+          </form>
+        )}
       </CardFooter>
     </Card>
   );

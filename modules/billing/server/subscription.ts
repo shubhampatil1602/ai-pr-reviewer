@@ -34,7 +34,7 @@ export async function getUserSubscription(
       user.subscriptionRenewsAt > new Date();
 
     if (stillActive) {
-      return { plan: "pro", status: "active", renewsAt };
+      return { plan: "pro", status: "canceled", renewsAt };
     }
 
     return { plan: "free", status: "canceled", renewsAt };
@@ -85,14 +85,42 @@ export async function cancelProSubscription(userId: string) {
   });
 
   if (!user?.razorpaySubscriptionId) {
-    throw new Error("No active subscription found.");
+    // If there is no active Razorpay ID, just forcefully clean up the DB state.
+    await prisma.user.update({
+      where: { id: userId },
+      data: { subscriptionStatus: "canceled" },
+    });
+    return;
   }
 
   const razorpay = getRazorpay();
-  await razorpay.subscriptions.cancel(user.razorpaySubscriptionId, 1);
+  try {
+    // Cancel at the end of the billing cycle (true)
+    await razorpay.subscriptions.cancel(user.razorpaySubscriptionId, true);
+  } catch (error) {
+    console.warn("Failed to cancel subscription on Razorpay (might already be canceled or invalid keys):", error);
+  }
 
+  // We ONLY update the status to canceled. We DO NOT clear subscriptionRenewsAt or plan.
+  // This allows the getUserSubscription function to grant Pro access until the renewal date is reached!
   await prisma.user.update({
     where: { id: userId },
     data: { subscriptionStatus: "canceled" },
+  });
+}
+
+export async function resetProSubscription(userId: string) {
+  if (process.env.NODE_ENV !== "development") {
+    throw new Error("This action is only allowed in development mode.");
+  }
+
+  await prisma.user.update({
+    where: { id: userId },
+    data: {
+      plan: "free",
+      subscriptionStatus: null,
+      subscriptionRenewsAt: null,
+      razorpaySubscriptionId: null,
+    },
   });
 }
