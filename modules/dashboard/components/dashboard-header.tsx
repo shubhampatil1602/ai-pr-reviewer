@@ -10,6 +10,7 @@
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { DashboardHeaderProps } from "../types";
+import { ModeToggle } from "@/components/theme/mode-toggle";
 
 /**
  * Renders the sticky dashboard page header with sidebar trigger.
@@ -31,6 +32,9 @@ export function DashboardHeader({ title, description }: DashboardHeaderProps) {
             {description}
           </p>
         ) : null}
+      </div>
+      <div className="ml-auto">
+        <ModeToggle />
       </div>
     </header>
   );
