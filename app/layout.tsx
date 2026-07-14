@@ -4,7 +4,6 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
 import { ThemeProvider } from "@/providers/theme-provider";
-import { QueryProvider } from "@/providers/query-provider";
 
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
@@ -46,17 +45,15 @@ export default function RootLayout({
       )}
     >
       <body className='min-h-full flex flex-col'>
-        <QueryProvider>
-          <ThemeProvider
-            attribute='class'
-            defaultTheme='system'
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-            <Toaster position='bottom-right' richColors />
-          </ThemeProvider>
-        </QueryProvider>
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <Toaster position='bottom-right' richColors />
+        </ThemeProvider>
       </body>
     </html>
   );

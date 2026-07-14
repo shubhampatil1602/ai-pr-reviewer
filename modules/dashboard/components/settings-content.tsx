@@ -8,6 +8,7 @@
 "use client";
 
 import { format } from "date-fns";
+import { CreditCard } from "lucide-react";
 
 import { UpgradeButton } from "@/modules/billing/components/upgrade-button";
 
@@ -32,7 +33,9 @@ import { SettingsProfile } from "@/modules/settings/types";
 import { UsageSummary } from "@/modules/billing/server/usage";
 import { statusBadge } from "../lib/status-style";
 import { CancelSubscriptionButton } from "@/modules/billing/components/cancel-subscription-button";
+import { resetSubscription } from "@/lib/billing";
 import { getDisplayName, getInitials } from "@/modules/auth/utils/user-menu";
+import { Button } from "@/components/ui/button";
 
 type SettingsContentProps = {
   profile: SettingsProfile;
@@ -214,7 +217,8 @@ function SubscriptionTab({
             </p>
             {renewalDate ? (
               <p className='text-xs text-muted-foreground'>
-                Renews {renewalDate}
+                {subscription.status === "canceled" ? "Expires" : "Renews"}{" "}
+                {renewalDate}
               </p>
             ) : null}
           </div>
@@ -234,7 +238,37 @@ function SubscriptionTab({
             disabled={subscription.status === "canceled"}
           />
         ) : null}
+
+        {process.env.NODE_ENV === "development" && (
+          <form action={resetSubscription}>
+            <Button variant='outline' type='submit'>
+              Reset Subscription (Dev Only)
+            </Button>
+          </form>
+        )}
       </CardFooter>
+    </Card>
+  );
+}
+
+function PaymentMethodCard() {
+  return (
+    <Card className="border-primary/20 bg-primary/5">
+      <CardHeader className="pb-3">
+        <CardTitle className="text-primary flex items-center gap-2">
+          <CreditCard className="size-5" />
+          Test Mode Enabled
+        </CardTitle>
+        <CardDescription className="text-primary/80">
+          No real money is involved right now. Please use the following dummy card number to test the Pro upgrade flow.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="flex items-center justify-between p-4 bg-background border rounded-md font-mono text-sm tracking-widest">
+          <span>4718 6091 0820 4366</span>
+          <span className="text-muted-foreground text-xs font-sans tracking-normal">Any expiry & CVV</span>
+        </div>
+      </CardContent>
     </Card>
   );
 }
@@ -266,6 +300,7 @@ export function SettingsContent({
 
         <TabsContent value='subscription' className='mt-3 space-y-3'>
           <SubscriptionTab subscription={subscription} usage={usage} />
+          <PaymentMethodCard />
         </TabsContent>
       </Tabs>
     </div>
