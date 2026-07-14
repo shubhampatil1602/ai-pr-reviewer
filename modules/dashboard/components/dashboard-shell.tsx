@@ -4,11 +4,11 @@ import { DashboardSidebar } from "./dashboard-sidebar";
 
 import { DashboardShellProps } from "../types";
 
-export function DashboardShell({ children, user, plan }: DashboardShellProps) {
+export function DashboardShell({ children, user, plan, usage }: DashboardShellProps) {
   return (
     <TooltipProvider>
       <SidebarProvider>
-        <DashboardSidebar user={user} plan={plan} />
+        <DashboardSidebar user={user} plan={plan} usage={usage} />
         <SidebarInset className='min-h-svh'>{children}</SidebarInset>
       </SidebarProvider>
     </TooltipProvider>

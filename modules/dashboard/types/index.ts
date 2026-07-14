@@ -4,11 +4,13 @@ export type DashboardShellProps = {
   children: React.ReactNode;
   user: UserMenuUser;
   plan?: string;
+  usage?: { used: number; limit: number | null };
 };
 
 export type DashboardSidebarProps = {
   user: UserMenuUser;
   plan?: string;
+  usage?: { used: number; limit: number | null };
 };
 
 export type DashboardHeaderProps = {
