@@ -13,7 +13,7 @@ import { DASHBOARD_ROUTES } from "@/modules/dashboard/lib/routes";
 import { statusBadge } from "../lib/status-style";
 
 import { PLAN_DETAILS } from "@/modules/settings/lib/plan-details";
-import { cn } from "@/lib/utils";
+import { cn, formatCompactNumber } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -119,7 +119,7 @@ async function TotalCommitsCard({
         <GitCommitIcon className='size-4 text-muted-foreground' />
       </CardHeader>
       <CardContent>
-        <p className='text-2xl font-semibold tracking-tight'>{totalCommits}</p>
+        <p className='text-2xl font-semibold tracking-tight'>{formatCompactNumber(totalCommits)}</p>
         <p className='text-xs text-muted-foreground'>
           Contributions in the last year
         </p>
