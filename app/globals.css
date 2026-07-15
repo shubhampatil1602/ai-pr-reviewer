@@ -40,7 +40,7 @@
   --font-sans: Montserrat, sans-serif;
   --font-serif: Merriweather, serif;
   --font-mono: Ubuntu Mono, monospace;
-  --radius: 0.625rem;
+  --radius: 0rem;
   --shadow-x: 0px;
   --shadow-y: 6px;
   --shadow-blur: 12px;
@@ -100,7 +100,7 @@
   --font-sans: Montserrat, sans-serif;
   --font-serif: Merriweather, serif;
   --font-mono: Ubuntu Mono, monospace;
-  --radius: 0.625rem;
+  --radius: 0rem;
   --shadow-x: 0px;
   --shadow-y: 6px;
   --shadow-blur: 12px;
@@ -173,6 +173,14 @@
   --shadow-lg: var(--shadow-lg);
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
+
+  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
 }
 
 @layer base {

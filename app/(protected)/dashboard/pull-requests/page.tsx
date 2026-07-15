@@ -24,7 +24,7 @@ function PullRequestsNotConnected() {
   return (
     <div className='flex flex-1 flex-col items-center justify-center gap-4 p-6'>
       <p className='text-sm text-muted-foreground'>
-        Install the GitHub App first to see AI-reviewed pull requests.
+        Install the Github App first to see AI-reviewed pull requests.
       </p>
       <Button
         nativeButton={false}

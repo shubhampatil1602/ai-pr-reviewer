@@ -11,7 +11,6 @@ import {
 import { DashboardNav } from "./dashboard-nav";
 import { SidebarUserButton } from "./sidebar-user-button";
 import { DashboardSidebarProps } from "../types";
-import { DASHBOARD_ROUTES } from "../lib/routes";
 
 import Link from "next/link";
 import { Rocket, Zap } from "lucide-react";
@@ -76,7 +75,7 @@ export function DashboardSidebar({
               size='lg'
               tooltip='PR Pilot - AI Code Reviewer'
               render={
-                <Link href={DASHBOARD_ROUTES.overview}>
+                <Link href={"/"}>
                   <div className='flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-none bg-sidebar'>
                     <div className='flex h-12 w-12 items-center justify-center bg-primary/10 text-primary'>
                       <Rocket className='h-6 w-6' />
