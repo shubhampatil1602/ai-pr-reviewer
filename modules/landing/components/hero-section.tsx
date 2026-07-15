@@ -100,8 +100,8 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
             className='text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 text-foreground '
           >
-            Automate your Pull Request <br /> reviews with{" "}
-            <span className='font-(family-name:--font-dancing) text-primary font-bold px-2 inline-block -rotate-2 transform-gpu'>
+            <span className="whitespace-nowrap">Automate your Pull Request</span> <br className="hidden md:block" /> reviews with{" "}
+            <span style={{ fontFamily: "var(--font-dancing)" }} className='text-primary font-bold px-2 inline-block -rotate-2 transform-gpu'>
               PR Pilot
             </span>
           </motion.h1>

@@ -82,13 +82,13 @@ export function SiteFooter() {
             </p>
           </div>
         </div>
+      </div>
 
-        {/* Bottom Section: Massive faded text */}
-        <div className='flex justify-center w-full mt-4 select-none pointer-events-none'>
-          <h1 className='text-[18vw] leading-[0.8] font-black tracking-tighter uppercase bg-gradient-to-b from-foreground/20 to-transparent bg-clip-text text-transparent'>
-            PR PILOT
-          </h1>
-        </div>
+      {/* Bottom Section: Massive faded text */}
+      <div className='flex justify-center w-full select-none pointer-events-none'>
+        <h1 className='text-[14vw] leading-[0.8] font-black tracking-tighter uppercase bg-gradient-to-b from-foreground/20 to-transparent bg-clip-text text-transparent whitespace-nowrap'>
+          PR PILOT
+        </h1>
       </div>
     </footer>
   );
