@@ -1,10 +1,11 @@
 import { prisma } from "@/lib/db";
-import { getGithubApp } from "@/modules/github/utils/github-app";
 
 /**
  * Fetches the total number of PRs reviewed by the app for a given installation.
  */
-export async function getTotalPrs(installationId: number | null): Promise<number> {
+export async function getTotalPrs(
+  installationId: number | null,
+): Promise<number> {
   if (!installationId) return 0;
   return prisma.pullRequest.count({
     where: {
@@ -20,24 +21,26 @@ export async function getTotalPrs(installationId: number | null): Promise<number
  */
 export async function getTotalCommits(
   installationId: number | null,
-  accountLogin: string | null
+  accountLogin: string | null,
 ): Promise<number> {
-  if (!installationId) return -1;
-  if (!accountLogin) return -2;
+  if (!accountLogin) return 0;
 
   try {
-    const response = await fetch(`https://github-contributions-api.deno.dev/${accountLogin}.json`, {
-      cache: 'no-store',
-      headers: { 'User-Agent': 'PR-Pilot' }
-    });
-    
+    const response = await fetch(
+      `https://github-contributions-api.deno.dev/${accountLogin}.json`,
+      {
+        cache: "no-store",
+        headers: { "User-Agent": "PR-Pilot" },
+      },
+    );
+
     if (!response.ok) {
-      return -3;
+      return 0;
     }
-    
+
     const data = await response.json();
-    return data.totalContributions || -4;
-  } catch (error) {
-    return -5;
+    return data.totalContributions || 0;
+  } catch {
+    return 0;
   }
 }

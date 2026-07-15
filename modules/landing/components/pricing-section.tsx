@@ -10,10 +10,10 @@ export function PricingSection() {
     <section id='pricing' className='py-24 md:py-32 bg-muted/30'>
       <div className='container mx-auto px-4 max-w-5xl'>
         <div className='text-center mb-16'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight mb-3 text-foreground'>
+          <h2 className='text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-3 text-foreground text-balance'>
             Simple, transparent pricing
           </h2>
-          <p className='text-muted-foreground text-lg max-w-2xl mx-auto'>
+          <p className='text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto text-balance'>
             Start for free, upgrade when you need more power. No hidden fees.
           </p>
         </div>

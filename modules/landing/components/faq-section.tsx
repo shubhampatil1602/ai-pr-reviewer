@@ -25,10 +25,10 @@ export function FAQSection() {
     <section id="faq" className="py-24 md:py-32 bg-background">
       <div className="container mx-auto px-4 max-w-3xl">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-4 text-foreground text-balance">
             Frequently Asked Questions
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-base sm:text-lg text-balance">
             Everything you need to know about security, privacy, and how PR Pilot works.
           </p>
         </div>

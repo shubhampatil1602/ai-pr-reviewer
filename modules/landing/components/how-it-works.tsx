@@ -39,10 +39,10 @@ export function HowItWorks() {
     >
       <div className='container mx-auto px-4 max-w-5xl'>
         <div className='text-center mb-16'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight mb-3 text-foreground'>
-            How it works
+          <h2 className='text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-3 text-foreground text-balance'>
+            How PR Pilot Works
           </h2>
-          <p className='text-muted-foreground text-lg max-w-2xl mx-auto'>
+          <p className='text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto text-balance'>
             Get set up in less than a minute. No complex pipelines or
             configuration required.
           </p>

@@ -98,9 +98,9 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-            className='text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 text-foreground '
+            className='text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tighter mb-6 text-foreground text-balance'
           >
-            <span className="whitespace-nowrap">Automate your Pull Request</span> <br className="hidden md:block" /> reviews with{" "}
+            <span className="whitespace-nowrap">Automate your Pull Request</span> <br className="hidden sm:block" /> reviews with{" "}
             <span style={{ fontFamily: "var(--font-dancing)" }} className='text-primary font-bold px-2 inline-block -rotate-2 transform-gpu'>
               PR Pilot
             </span>
@@ -110,7 +110,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-            className='text-xs sm:text-lg text-muted-foreground max-w-xl mb-10 drop-shadow-sm'
+            className='text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl mx-auto mb-10 drop-shadow-sm text-balance px-4 sm:px-0'
           >
             Get instant, intelligent code reviews, catch bugs before they merge,
             and save your engineering team hours every week.
@@ -120,12 +120,12 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
-            className='flex flex-col sm:flex-row items-center gap-4'
+            className='flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto px-6 sm:px-0'
           >
-            <motion.div whileTap={{ scale: 0.95 }}>
-              <Button size='lg' className='h-12 px-8  text-base font-medium'>
-                <Link href='/sign-in' className='flex items-center'>
-                  <GithubIcon className='mr-2 size-5' />
+            <motion.div whileTap={{ scale: 0.95 }} className='w-full sm:w-auto'>
+              <Button className='w-full sm:w-auto h-11 sm:h-12 px-6 sm:px-8 text-sm sm:text-base font-medium'>
+                <Link href='/sign-in' className='flex items-center justify-center w-full'>
+                  <GithubIcon className='mr-2 size-4 sm:size-5' />
                   Get Started / Connect GitHub
                 </Link>
               </Button>
@@ -133,10 +133,9 @@ export function HeroSection() {
 
             <Button
               variant='outline'
-              size='lg'
-              className='h-12 px-8  text-base font-medium'
+              className='w-full sm:w-auto h-11 sm:h-12 px-6 sm:px-8 text-sm sm:text-base font-medium'
             >
-              <Link href='#features' className='flex items-center'>
+              <Link href='#features' className='flex items-center justify-center w-full'>
                 See how it works <ArrowRight className='ml-2 size-4' />
               </Link>
             </Button>

@@ -134,10 +134,10 @@ export function FeaturesBento() {
     <section id='features' className='py-24 md:py-32 bg-muted/30'>
       <div className='container mx-auto px-3 max-w-5xl'>
         <div className='mb-12'>
-          <h2 className='text-3xl md:text-4xl font-bold tracking-tight mb-3 text-foreground text-center'>
-            Autonomous AI workflow features
+          <h2 className='text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-3 text-foreground text-center text-balance'>
+            Everything you need for perfect code
           </h2>
-          <p className='text-muted-foreground text-lg mx-auto text-center max-w-3xl'>
+          <p className='text-muted-foreground text-base sm:text-lg mx-auto text-center max-w-3xl text-balance'>
             Everything you need to ship better code, designed to fit seamlessly
             into your existing workflow.
           </p>
