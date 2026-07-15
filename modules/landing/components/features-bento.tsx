@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { ShieldCheck, Puzzle } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const features = [
   {
@@ -150,7 +151,11 @@ export function FeaturesBento() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`p-6 border border-border bg-card flex overflow-hidden ${feature.className} ${feature.className.includes("flex-row") ? "" : "flex-col"}`}
+              className={cn(
+                "p-6 border border-border bg-card flex overflow-hidden",
+                feature.className,
+                !feature.className.includes("flex-row") && "flex-col"
+              )}
             >
               <div
                 className={
