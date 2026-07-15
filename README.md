@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 PR Pilot - AI Code Reviewer
 
-## Getting Started
+Automate your Pull Request reviews seamlessly. **PR Pilot** is an intelligent AI-powered code reviewer that deeply understands your repository context to help you ship better, more secure code faster.
 
-First, run the development server:
+[![Live Demo](https://img.shields.io/badge/Live_Demo-pr--pilot.shubhamspatil.me-blue?style=for-the-badge)](https://pr-pilot.shubhamspatil.me/)
+
+## ✨ Features
+
+- **🧠 Deep Context Understanding:** Doesn't just read the diff—understands how changes impact the broader architecture.
+- **⚡ Background Processing:** Powered by Inngest for reliable, asynchronous webhook handling and AI processing.
+- **🤖 High-Quality Reviews:** Uses advanced LLMs to provide constructive feedback, flag vulnerabilities, and optimize performance.
+- **🔍 Semantic Repository Search:** Integrated with Pinecone vector database to embed and search your codebase instantly.
+- **🔐 Secure Authentication:** Seamless GitHub OAuth powered by Better Auth.
+- **💳 Monetization:** Razorpay integration for frictionless subscriptions.
+- **🎨 Beautiful UI:** Built with Tailwind CSS v4, Framer Motion, and cutting-edge UI components.
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4 + Framer Motion
+- **Database:** PostgreSQL (Neon) + Prisma ORM
+- **Vector DB:** Pinecone
+- **Authentication:** Better Auth
+- **Background Jobs:** Inngest
+- **AI Integration:** AI SDK + OpenRouter
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/shubhampatil1602/ai-pr-reviewer.git
+cd ai-pr-reviewer
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Setup Environment Variables
 
-## Learn More
+Create a `.env` file in the root directory and add the following keys:
 
-To learn more about Next.js, take a look at the following resources:
+```env
+DATABASE_URL="your_postgresql_database_url"
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Authentication
+BETTER_AUTH_SECRET="your_random_secret"
+BETTER_AUTH_URL="http://localhost:3000"
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# GitHub App Integration
+GITHUB_APP_ID="your_app_id"
+GITHUB_CLIENT_ID="your_client_id"
+GITHUB_CLIENT_SECRET="your_client_secret"
+GITHUB_WEBHOOK_SECRET="your_webhook_secret"
+GITHUB_APP_PRIVATE_KEY="your_private_key"
 
-## Deploy on Vercel
+# Background Jobs
+INNGEST_DEV=1
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# AI & Vector DB
+OPENROUTER_API_KEY="your_openrouter_key"
+PINECONE_INDEX="your_pinecone_index"
+PINECONE_API_KEY="your_pinecone_key"
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 4. Setup Database
+
+```bash
+npx prisma db push
+npx prisma generate
+```
+
+### 5. Run the Application
+
+You will need to run the Next.js app and the Inngest dev server simultaneously:
+
+```bash
+# Terminal 1: Next.js dev server
+pnpm dev
+
+# Terminal 2: Inngest dev server
+npx inngest-cli@latest dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the app!
+
+## 🌍 Deployment
+
+PR Pilot is optimized for deployment on **Vercel**.
+
+1. Connect your GitHub repository to Vercel.
+2. Add all environment variables.
+3. Set the Build Command in Vercel to `npx prisma generate && next build`.
+4. Deploy!
